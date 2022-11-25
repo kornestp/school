@@ -1,0 +1,90 @@
+.modern-form input{
+    text-align:center;
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important; 
+}
+.form-design{
+    border-bottom: 2px solid rgb(169 173 174);
+}
+
+.form-design input:focus, select:focus, textarea:focus  .form-design{
+    outline: none;
+    border: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important; 
+  }
+.modern-form input[type=submit]{
+    width: 100%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 17px 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    background-image: -moz-linear-gradient(left, rgb(0 91 234), rgb(0 198 251));
+    background-image: -ms-linear-gradient(left, rgb(0 91 234), rgb(0 198 251));
+    background-image: -o-linear-gradient(left, rgb(0 91 234), rgb(0 198 251));
+    background-image: -webkit-linear-gradient(left, rgb(0 91 234), rgb(0 198 251));
+    background-image: linear-gradient(left, rgb(0 91 234), rgb(0 198 251));
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    opacity:0.6;
+  }
+  
+.modern-form input[type=submit]:hover {
+  top: 0;
+  left: 0;
+  color: #fff;
+  cursor:pointer;
+  opacity:1;
+}
+.myradio input[type=radio]{
+    opacity: 0;
+    cursor: pointer;
+}
+.myradio{
+    padding:0;
+    position:relative;
+    height:45px;
+}
+.label-radio{
+    display: block;
+    cursor:pointer;
+}
+.spancek{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border:1px solid rgb(102 102 102);
+    padding-top:4px;
+    padding-left:10px;
+    border-radius: 5px;
+    transition:0.5s;
+}
+.modern-form input[type=radio]:hover ~ .spancek{
+    border:1px solid rgb(14 189 148);
+    color:rgb(14 189 148);
+}
+.modern-form input[type=radio]:checked  ~ .spancek {
+  background-color: rgb(14 189 148);
+  color:rgb(255 255 255);
+  border:1px solid rgb(14 189 148);
+}
