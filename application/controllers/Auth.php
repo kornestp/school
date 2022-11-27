@@ -8,10 +8,10 @@ class Auth extends CI_Controller{
     }else{
       if($this->session->userdata('level') == 'admin'){
         redirect('dashboard');
-      }else if($this->session->userdata('level') == 'mahasiswa'){
-        redirect('dashboard_mhs');
-      }else if($this->session->userdata('level') == 'dosen'){
-        redirect('dashboard_dsn');
+      }else if($this->session->userdata('level') == 'administrator'){
+        redirect('dashboard_adm');
+      }else if($this->session->userdata('level') == 'volunteer'){
+        redirect('dashboard_vltr');
       }
     }
   }
@@ -47,8 +47,8 @@ class Auth extends CI_Controller{
         }
         else if($sess_data['level'] == 'administrator'){
           redirect('dashboard_adm');
-        } else if($sess_data['level'] == 'dosen'){
-          redirect('dashboard_dsn');
+        } else if($sess_data['level'] == 'volunteer'){
+          redirect('dashboard_vltr');
         }
         else{
           $this->session->set_flashdata(

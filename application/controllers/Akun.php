@@ -28,10 +28,7 @@ class Akun extends CI_Controller{
   public function index(){
     $id_user        = $this->session->userdata('id_user');
     $data['detail'] = $this->Akun_model->ambil_id_akun($id_user);
-    $this->load->view('templates_administrator/header');
-    $this->load->view('templates_administrator/sidebar');
     $this->load->view('administrator/akun_detail', $data);
-    $this->load->view('templates_administrator/footer');
   }
 
   public function update_akun_aksi(){

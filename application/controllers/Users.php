@@ -102,55 +102,55 @@ class Users extends CI_Controller{
     }
   }
 
-  public function update($id){
-    $where = array('id_user'=>$id);
-
-    $data['users'] = $this->user_model->edit_data($where, 'users')->result();
-    $this->load->view('templates_administrator/header');
-    $this->load->view('templates_administrator/sidebar');
-    $this->load->view('administrator/users_update', $data);
-    $this->load->view('templates_administrator/footer');
+  public function update($userID){
+    $where = array('userID'=>$userID);
+    $data['adm'] =  $this->user_model->getUserAdministrator($where)->result();
+    $this->load->view('administrator/profile_adm',$data);
   }
 
-  public function update_aksi(){
-    $id         = $this->input->post('id');
-    $username   = $this->input->post('username');
-    $password   = $this->input->post('password');
-    $email      = $this->input->post('email');
-    $level      = $this->input->post('level');
-    $blokir     = $this->input->post('blokir');
-    $id_session = $this->input->post('id_session');
+  public function update_administrator_aksi(){
+    $id  = $this->input->post('id_administrator');
+    $staffID  = $this->input->post('staffID');
+    $userID  = $this->input->post('userID');
 
+    $data_a = array(
+        'id_administrator'  => $this->input->post('id_administrator'),
+        'staffID'           => $this->input->post('staffID'),
+        'name'              => $this->input->post('name'),
+        'email'             => $this->input->post('email'),
+        'phone'             => $this->input->post('phone'),
+        'position'          => $this->input->post('position')
+    );
     $data = array(
-      'username' => $username,
-      'password' => $password,
-      'email'    => $email,
-      'level'    => $level,
-      'blokir'   => $blokir,
+        'userID'      => $this->input->post('userID'),
+        'userNumID'           => $this->input->post('staffID'),
+        'password'      => $this->input->post('password')
     );
 
-    $where = array('userID'=>$id);
+    $where = array('id_administrator'=>$id);
+    $where1 = array('userID'=>$userID);
 
     $dataam['ambil'] = $this->user_model->ambil_id_user($id);
     foreach($dataam['ambil'] as $dtkod){
-      $username1 = $dtkod->username;
+      $staffID1 = $dtkod->staffID;
     }
-    if($username != $username1) {
-        $is_unique =  '|is_unique[users.username]';
+    if($staffID != $staffID1) {
+        $is_unique =  '|is_unique[administrator.staffID]';
     } else {
         $is_unique =  '';
     }
    
 
-    $this->form_validation->set_rules('username', 'username', 'required'.$is_unique, [
-      'required'  => 'Username prodi wajib diisi!',
-      'is_unique' => 'Username "<b>'.$username.'</b>" sudah ada'
+    $this->form_validation->set_rules('staffID', 'staffID', 'required'.$is_unique, [
+      'required'  => 'staffID prodi wajib diisi!',
+      'is_unique' => 'staffID "<b>'.$staffID.'</b>" sudah ada'
     ]);
 
     if($this->form_validation->run() == false){
-			$this-> update($id);
+			$this-> update($userID);
 		} else {
-      $this->user_model->update_data($where, $data, 'users');
+      $this->user_model->update_data($where1, $data, 'user');
+      $this->user_model->update_data_adm($where, $data_a, 'administrator');
       $this->session->set_flashdata(
         'pesan',
         '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -160,7 +160,7 @@ class Users extends CI_Controller{
           </button>
         </div>'
       );
-      redirect('users');
+      redirect('dashboard_adm/profile');
     }
   }
 

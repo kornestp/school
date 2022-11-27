@@ -30,6 +30,14 @@ class School extends CI_Controller{
   public function tambah_school(){
     $this->load->view('administrator/school_form');
   }
+  public function submit_request(){
+    $userID = $this->session->userdata('userID'); 
+    $where = 'user.userID ='.'"'.$userID.'"';
+    
+    $data['adm'] =  $this->user_model->getUserAdministrator($where)->result();
+    
+    $this->load->view('administrator/submit_request',$data);
+  }
 
   public function tambah_school_aksi(){
     $this->_rules();
@@ -60,6 +68,43 @@ class School extends CI_Controller{
       );
       redirect('school/tambah_school');
     }
+  }
+  public function request_aksi(){
+    
+      $staffID = $this->input->post('staffID');
+      $description = $this->input->post('description');
+      $date = $this->input->post('date');
+      $time = $this->input->post('time');
+      $studentLevel = $this->input->post('studentLevel');
+      $numStudents = $this->input->post('numStudents');
+      $pc = $this->input->post('pc');
+      $mobileDevice = $this->input->post('mobileDevice');
+      $network = $this->input->post('network');
+
+      $data = array(
+        'description' => $description,
+        'date' => $date,
+        'time' => $time,
+        'studentLevel' => $studentLevel,
+        'numStudents' => $numStudents,
+        'pc' => $pc,
+        'mobileDevice' => $mobileDevice,
+        'network' => $network,
+        'staffID' => $staffID,
+        'status' => 'Pending'
+      );
+
+      $this->school_model->insert_data_request($data, 'request');
+      $this->session->set_flashdata(
+        'pesan',
+        '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          Data Request berhasil dikirim
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>'
+      );
+      redirect('dashboard_adm/submit_request');
   }
 
   public function _rules(){

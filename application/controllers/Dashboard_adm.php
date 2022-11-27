@@ -27,4 +27,22 @@ class Dashboard_adm extends CI_Controller{
     
     $this->load->view('administrator/dashboard_adm',$data);
   }
+
+  public function profile(){
+    $userID = $this->session->userdata('userID'); 
+    $where = 'user.userID ='.'"'.$userID.'"';
+    
+    $data['adm'] =  $this->user_model->getUserAdministrator($where)->result();
+    
+    $this->load->view('administrator/profile_adm',$data);
+  }
+
+  public function submit_request(){
+    $userID = $this->session->userdata('userID'); 
+    $where = 'user.userID ='.'"'.$userID.'"';
+    
+    $data['adm'] =  $this->user_model->getUserAdministrator($where)->result();
+    
+    $this->load->view('administrator/submit_request',$data);
+  }
 }
