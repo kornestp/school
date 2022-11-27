@@ -50,7 +50,9 @@
 
 				<div class="position-relative mt-5">
 					<div class="position-absolute top-0 start-0 text-primary">
-						Register as Volunteer?
+						<a href="<?= base_url('volunteer')?>">
+							Register as Volunteer?
+						</a>
 					</div>
 					<div class="position-absolute top-0 end-0">
 						<a href="<?= base_url('dashboard') ?>" type="button" class="btn btn-outline-primary rounded-pill">Sign Up</a>

@@ -60,33 +60,48 @@
 		</div>
 	</nav>
 	<div class="container-fluid bg-info bg-opacity-10 h-100 pb-5">
-		<?php foreach($adm as $rowadm): ?>
-		<div class="row ps-4 pt-5">
-			<div class="col-3 pe-4 position-relative">
-				<div class="position-absolute top-50 start-50 translate-middle" style="z-index:100">
-					<img class="rounded mx-auto d-block w-75" src="<?= base_url() ?>assets/img/user 2.png">
-				</div>
-
-				<div class="card" style="width: 100%;height:350px;">
-					<div class="card-body bg-primary h-50">
+		<div class="container px-5 w-50 pt-3">
+			<?php foreach($adm as $rowadm): ?>
+				<form method="post" action="<?= base_url('users/update_administrator_aksi')?>" accept-charset="utf-8">
+					<input type="text" name="userID" class="form-control" value="<?= $rowadm->userID; ?>"  hidden>
+					<input type="text" name="id_administrator" class="form-control" 
+						value="<?= $rowadm->id_administrator; ?>" hidden>
+					<div class="mb-3">
+						<label class="form-label">Password</label>
+						<?= form_error('password', '<div class="text-danger small ml-3 p-1">', '</div>') ?>
+						<input type="text" name="password" class="form-control" value="<?= $rowadm->password; ?>" required>
 					</div>
-					<div class="card-body h-50 pt-5">
-						<h5 class="card-title text-center mt-4"><?= $rowadm->name; ?></h5>
-						<p class="card-text text-center">School Administrator</p>
+					<div class="mb-3">
+						<label class="form-label">Fullname</label>
+						<?= form_error('name', '<div class="text-danger small ml-3 p-1">', '</div>') ?>
+						<input type="text" name="name" class="form-control" value="<?= $rowadm->name; ?>" required>
 					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 100%;background-color:rgb(7 7 137);">
-					<div class="card-body text-white">
-						<p class="card-title">Position: <?= $rowadm->position; ?></p>
-						<p class="card-text">School ID: <?= $rowadm->schoolID; ?></p>
-						<p class="card-text">School Name: <?= $rowadm->schoolName; ?></p>
+					<div class="mb-3">
+						<label class="form-label">Email</label>
+						<?= form_error('email', '<div class="text-danger small ml-3 p-1">', '</div>') ?>
+						<input type="email" name="email" class="form-control" value="<?= $rowadm->email; ?>" required>
 					</div>
-				</div>
-			</div>
+					<div class="mb-3">
+						<label class="form-label">Phone</label>
+						<?= form_error('phone', '<div class="text-danger small ml-3 p-1">', '</div>') ?>
+						<input type="text" name="phone" class="form-control" value="<?= $rowadm->phone; ?>" required>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Staff ID</label>
+						<?= form_error('staffID', '<div class="text-danger small ml-3 p-1">', '</div>') ?>
+						<input type="text" name="staffID" class="form-control" value="<?= $rowadm->staffID; ?>" required>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Position</label>
+						<?= form_error('position', '<div class="text-danger small ml-3 p-1">', '</div>') ?>
+						<input type="text" name="position" class="form-control" value="<?= $rowadm->position; ?>" required>
+					</div>
+					<div class="d-grid gap-2 col-6 mx-auto">
+						<button type="submit" class="btn btn-primary">Confirm</button>
+					</div>
+				</form>
+			<?php endforeach; ?>
 		</div>
-		<?php endforeach; ?>
 	</div>
 
 	<!--bootstrap JS-->

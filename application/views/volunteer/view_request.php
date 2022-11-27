@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Dashboard</title>
+  <title>View Request</title>
   <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="<?= base_url() ?>assets/images/icons/favicon.ico"/>
   <!--===============================================================================================-->
@@ -36,23 +36,23 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" aria-current="page" href="<?= base_url('dashboard_adm') ?>">
+						<a class="nav-link text-dark" aria-current="page" href="<?= base_url('dashboard_vltr') ?>">
 							<i class="fa fa-home fa-lg text-info" aria-hidden="true"></i> Home
 						</a>
 					</li>
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" href="<?= base_url('dashboard_adm/profile') ?>">
+						<a class="nav-link text-dark" href="<?= base_url('dashboard_vltr/profile') ?>">
 							<i class="fa fa-user fa-lg text-info" aria-hidden="true"></i> Profile
 						</a>
 					</li>
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" href="<?= base_url('dashboard_adm/submit_request') ?>">
-							<i class="fa fa-file-text fa-lg text-info" aria-hidden="true"></i> Submit Requests
+						<a class="nav-link text-dark" href="<?= base_url('dashboard_vltr/view_request') ?>">
+							<i class="fa fa-file-text fa-lg text-info" aria-hidden="true"></i> View Requests
 						</a>
 					</li>
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" href="<?= base_url('dashboard_adm/submit_request') ?>">
-							<i class="fa fa-calendar-check-o fa-lg text-info" aria-hidden="true"></i> View Requests
+						<a class="nav-link text-dark" href="<?= base_url('dashboard_vltr/submit_offers') ?>">
+							<i class="fa fa-calendar-check-o fa-lg text-info" aria-hidden="true"></i> Submit Offers
 						</a>
 					</li>
 				</ul>
@@ -60,33 +60,32 @@
 		</div>
 	</nav>
 	<div class="container-fluid bg-info bg-opacity-10 h-100 pb-5">
-		<?php foreach($adm as $rowadm): ?>
-		<div class="row ps-4 pt-5">
-			<div class="col-3 pe-4 position-relative">
-				<div class="position-absolute top-50 start-50 translate-middle" style="z-index:100">
-					<img class="rounded mx-auto d-block w-75" src="<?= base_url() ?>assets/img/user 2.png">
-				</div>
-
-				<div class="card" style="width: 100%;height:350px;">
-					<div class="card-body bg-primary h-50">
-					</div>
-					<div class="card-body h-50 pt-5">
-						<h5 class="card-title text-center mt-4"><?= $rowadm->name; ?></h5>
-						<p class="card-text text-center">School Administrator</p>
+		<div class="container px-5 pt-4">
+			<h2 class="text-center">View Request by:</h2>
+			<div class="row ps-4 pt-5">
+				<div class="col">
+					<div class="d-grid gap-2">
+						<a href="<?= base_url('dashboard_vltr/view_request_tbl') ?>" type="button" class="btn btn-primary btn-lg ml-3">
+							<i class="fa fa-building fa-2x" aria-hidden="true"></i><br> School
+						</a>
 					</div>
 				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 100%;background-color:rgb(7 7 137);">
-					<div class="card-body text-white">
-						<p class="card-title">Position: <?= $rowadm->position; ?></p>
-						<p class="card-text">School ID: <?= $rowadm->schoolID; ?></p>
-						<p class="card-text">School Name: <?= $rowadm->schoolName; ?></p>
+				<div class="col">
+					<div class="d-grid gap-2">
+						<a href="<?= base_url('dashboard_vltr/view_request_tbl_city') ?>" type="button" class="btn btn-primary btn-lg ml-3">
+							<i class="fa fa-building fa-2x" aria-hidden="true"></i><br> City
+						</a>
+					</div>
+				</div>
+				<div class="col">
+					<div class="d-grid gap-2">
+						<a href="<?= base_url('dashboard_vltr/view_request_tbl_date') ?>" type="button" class="btn btn-primary btn-lg ml-3">
+							<i class="fa fa-calendar fa-2x" aria-hidden="true"></i><br> Date
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-		<?php endforeach; ?>
 	</div>
 
 	<!--bootstrap JS-->

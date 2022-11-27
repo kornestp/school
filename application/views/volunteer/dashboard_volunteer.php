@@ -36,23 +36,23 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" aria-current="page" href="<?= base_url('dashboard_adm') ?>">
+						<a class="nav-link text-dark" aria-current="page" href="<?= base_url('dashboard_vltr') ?>">
 							<i class="fa fa-home fa-lg text-info" aria-hidden="true"></i> Home
 						</a>
 					</li>
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" href="<?= base_url('dashboard_adm/profile') ?>">
+						<a class="nav-link text-dark" href="<?= base_url('dashboard_vltr/profile') ?>">
 							<i class="fa fa-user fa-lg text-info" aria-hidden="true"></i> Profile
 						</a>
 					</li>
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" href="<?= base_url('dashboard_adm/submit_request') ?>">
-							<i class="fa fa-file-text fa-lg text-info" aria-hidden="true"></i> Submit Requests
+						<a class="nav-link text-dark" href="<?= base_url('dashboard_vltr/view_request') ?>">
+							<i class="fa fa-file-text fa-lg text-info" aria-hidden="true"></i> View Requests
 						</a>
 					</li>
 					<li class="nav-item pe-4">
-						<a class="nav-link text-dark" href="<?= base_url('dashboard_adm/submit_request') ?>">
-							<i class="fa fa-calendar-check-o fa-lg text-info" aria-hidden="true"></i> View Requests
+						<a class="nav-link text-dark" href="<?= base_url('dashboard_vltr/submit_offers') ?>">
+							<i class="fa fa-calendar-check-o fa-lg text-info" aria-hidden="true"></i> Submit Offers
 						</a>
 					</li>
 				</ul>
@@ -72,16 +72,17 @@
 					</div>
 					<div class="card-body h-50 pt-5">
 						<h5 class="card-title text-center mt-4"><?= $rowadm->name; ?></h5>
-						<p class="card-text text-center">School Administrator</p>
+						<p class="card-text text-center">Volunteer</p>
 					</div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="card" style="width: 100%;background-color:rgb(7 7 137);">
 					<div class="card-body text-white">
-						<p class="card-title">Position: <?= $rowadm->position; ?></p>
-						<p class="card-text">School ID: <?= $rowadm->schoolID; ?></p>
-						<p class="card-text">School Name: <?= $rowadm->schoolName; ?></p>
+						<p class="card-title">Email: <?= $rowadm->email; ?></p>
+						<p class="card-text">Phone: <?= $rowadm->phone; ?></p>
+						<p class="card-text">Occupation: <?= $rowadm->occupation; ?></p>
+						<p class="card-text">Date of Birth: <?= $rowadm->birthDate; ?></p>
 					</div>
 				</div>
 			</div>

@@ -2,6 +2,7 @@
 
 class School_model extends CI_Model{
   public $table = 'schools';
+  public $table1 = 'request';
   public $schoolID    = 'schoolID';
   public $order = 'DESC';
 
@@ -14,6 +15,10 @@ class School_model extends CI_Model{
 
   public function insert_data($data, $table){
     $this->db->insert($table, $data);
+  }
+
+  public function insert_data_request($data, $table1){
+    $this->db->insert($table1, $data);
   }
   
   public function ambil_id_kelas($id){
